@@ -10,11 +10,7 @@ is supported by various real-time operating systems, for example [Keil RTX5](htt
 Operation
 ---------
 
- - At start the `vioLED0` blinks in 1 sec interval.
- - The `vioBUTTON0` changes the blink frequency and start/stops `vioLED1`.
-
-The board hardware mapping of `vioLED0`, `vioLED1`, and `vioBUTTON0` depends on the 
-configuration of the [CMSIS-Driver VIO](https://arm-software.github.io/CMSIS_5/Driver/html/group__vio__interface__gr.html).
+ - The application prints alternately "LED On" and "LED Off" to the serial output.
 
 RTOS: Keil RTX5 Real-Time Operating System
 ------------------------------------------
@@ -31,22 +27,10 @@ It is configured with the following settings:
 
 Refer to [Configure RTX v5](https://arm-software.github.io/CMSIS_5/RTOS2/html/config_rtx5.html) for a detailed description of all configuration options.
 
-Board: ARM V2M-MPS3-SSE-300-FVP
+Board: ARM V2M-MPS3-SSE-300-FVP (AVH)
 ----------------------------------------------
 
-MPS3 platform for Corstone-300 simulated by Fixed Virtual Platform (FVP).
-
-Running the FVP in uVision requires the following settings:
- - open "Options for Target"
- - select "Debug" tab
- - under "Use" select "Models ARMv8-M Debugger" and click "Settings" end enter the following:
-   - Command: C:\Program Files\ARM\FVP_Corstone_SSE-300\models\Win64_VC2017\FVP_Corstone_SSE-300_Ethos-U55.exe (when FVP is installed in default directory)
-   - Target: cpu0
-   - Configuration File: fvp_config.txt
-
-Running the FVP via command line (from project root directory and FVP executable in path):
- - `FVP_Corstone_SSE-300_Ethos-U55.exe -a Objects\image.axf` when using telnet as UART0 output or
- - `FVP_Corstone_SSE-300_Ethos-U55.exe -C mps3_board.telnetterminal0.start_telnet=0 -C mps3_board.uart0.out_file=- -a Objects\image.axf` when using stdout as UART0 output
+MPS3 platform for Corstone-300 simulated by [Arm Virtual Hardware (AVH)](https://avh.arm.com).
 
 The heap/stack setup and the CMSIS-Driver assignment is in configuration files of related software components.
 
@@ -65,19 +49,4 @@ The heap/stack setup and the CMSIS-Driver assignment is in configuration files o
 
 | CMSIS-Driver | Peripheral
 |:-------------|:----------
-| ETH_MAC0     | Ethernet LAN91C111
-| ETH_PHY0     | Ethernet LAN91C111
 | USART0       | USART0
-
-| CMSIS-Driver VIO  | Physical board hardware
-|:------------------|:-----------------------
-| vioBUTTON0        | User Button PB1
-| vioBUTTON1        | User Button PB2
-| vioLED0           | User LED UL0
-| vioLED1           | User LED UL1
-| vioLED2           | User LED UL2
-| vioLED3           | User LED UL3
-| vioLED4           | User LED UL4
-| vioLED5           | User LED UL5
-| vioLED6           | User LED UL6
-| vioLED7           | User LED UL7
